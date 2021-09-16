@@ -24,6 +24,8 @@ This is what we decided on for our final design. We focused on making it modular
 ![](finalDesignvFinal.png)
 
 # User testing
+We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We discovered that the font we had originally chosen was sort of hard to read and distracting (we were using a typewriter type font), so we decided to change our font to that in our final design. Additionally, it became clear that the buttons became confusing when they were all displayed on every page, so we displayed only relevant buttons.
+
 # Final design
 ## In an empty list, create an item named "Buy new John Grisham book"
 ![](task1.png)
