@@ -3,6 +3,10 @@ body {
     background-color: #b2d9e3;
 }
 
+a {
+    font-size: xx-large;
+}
+
 .fa {
     font-size: 24px;
 }
