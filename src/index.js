@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {InMemoryApp} from "./InMemoryApp";
+import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 const initialData = [
     {
         title: "Buy new John Grisham book ",
-        id: Math.random() * 1000,
+        id: generateUniqueID(),
         completed: false
     },
     {
         title: "Call Mom ",
-        id: Math.random() * 1000,
+        id: generateUniqueID(),
         completed: true
     }
 ]

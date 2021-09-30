@@ -3,6 +3,7 @@ import {Checklist} from './Checklist.js'
 import {AddTaskPage} from "./AddTaskPage";
 import {useState} from "react";
 import {IncompleteTasksOnly} from "./IncompleteTasksOnly";
+import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 export function App(props) {
     let [itemsToShow, setItemsToShow] = useState("both");
@@ -23,7 +24,7 @@ export function App(props) {
     }
 
     function renderAddTaskPage() {
-        setComponentsToRender(<AddTaskPage addDataMember={props.changeData}/>);
+        setComponentsToRender(<AddTaskPage addNewDataPoint={props.addNewDataPoint}/>);
         setShowButtons(!showButtons);
     }
 
@@ -32,7 +33,7 @@ export function App(props) {
         if (itemsToShow === "both") {
             setComponentsToRender(<IncompleteTasksOnly items={props.data} />);
         } else {
-            setComponentsToRender(<Checklist items={props.data}/>);
+            setComponentsToRender(<Checklist items={props.data} handleChangeField={props.handleChangeField}/>);
         }
 
     }

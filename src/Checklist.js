@@ -10,9 +10,11 @@ export function Checklist(props) {
         if (currentIndex > -1) {
             completedItems = completedItems.filter(item => item !== id);
             setCompletedItems(completedItems);
+            props.handleChangeField(id, "completed", false);
         } else {
             completedItems = [...completedItems, id];
             setCompletedItems(completedItems);
+            props.handleChangeField(id, "completed", true);
         }
     }
 
