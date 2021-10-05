@@ -5,18 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {InMemoryApp} from "./InMemoryApp";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
-const initialData = [
-    {
-        title: "Buy new John Grisham book ",
-        id: generateUniqueID(),
-        completed: false
-    },
-    {
-        title: "Call Mom ",
-        id: generateUniqueID(),
-        completed: true
-    }
-]
+const initialData = []
 
 ReactDOM.render(
   <React.StrictMode>

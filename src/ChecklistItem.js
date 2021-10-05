@@ -11,7 +11,9 @@ export function ChecklistItem(props) {
         <div className={"checklist"}>
             {inputTag}
             <label htmlFor={props.id}>{props.title}</label>
-            <button><i className="fas fa-pencil-alt"/></button>
+            <button onClick={() => props.modifyTask(props.title, props.id)}><i className="fas fa-pencil-alt"/></button>
         </div>
     );
+
+    //
 }
