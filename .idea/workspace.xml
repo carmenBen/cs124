@@ -5,29 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fdd984f-1359-4132-acb8-ce13611e1f5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/teams.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/design.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/design.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task1_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task1_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task2_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task2_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task3_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task4_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task4_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task5_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/task6_1.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChecklistItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChecklistItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +36,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.install gh-pages">
     <configuration name="install gh-pages" type="js.build_tools.npm" nameIsGenerated="true">
@@ -91,7 +78,8 @@
       <updated>1632109305700</updated>
       <workItem from="1632109308815" duration="1741000" />
       <workItem from="1632169555060" duration="33000" />
-      <workItem from="1633404389864" duration="5099000" />
+      <workItem from="1633404389864" duration="6131000" />
+      <workItem from="1633412524524" duration="612000" />
     </task>
     <servers />
   </component>
@@ -108,5 +96,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
