@@ -96,11 +96,11 @@ export function App(props) {
 
     return (
         <div className="App">
+            <h1>To Do List</h1>
             {componentsToRender}
             {showButtons ? renderAddTaskButton() : undefined}
             {showButtons ? renderChangeItemsButton() : undefined}
             {showButtons ? renderDeleteItemsButton() : undefined}
-
         </div>
     );
 }
