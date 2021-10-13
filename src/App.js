@@ -25,14 +25,12 @@ export function App(props) {
         setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
                                          completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
         setShowButtons(true);
-        console.log(data);
     }, [data]);
 
     useEffect(() => {
         setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
                                          completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
         setShowButtons(true);
-        console.log("using effect");
     }, [completedItems]);
 
     function addNewItem(value) {
@@ -68,7 +66,9 @@ export function App(props) {
     function changeItemsToShow() {
         setItemsToShow((itemsToShow === "incomplete" ? "both" : "incomplete"));
         if (itemsToShow === "both") {
-            setComponentsToRender(<IncompleteTasksOnly completedItems={completedItems} changeCompletedItems={setCompletedItems} handleChangeField={handleChangeField} items={data}/>);
+            setComponentsToRender(<IncompleteTasksOnly completedItems={completedItems}
+                                                       changeCompletedItems={setCompletedItems}
+                                                       handleChangeField={handleChangeField} items={data}/>);
         } else {
             setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
                                              completedItems={completedItems}
@@ -83,6 +83,7 @@ export function App(props) {
 
     return (
         <div className="App">
+            <h1>To Do List</h1>
             {componentsToRender}
             {showButtons && <div>
                 <input type="button" value="Add New Task" onClick={renderAddTaskPage}/>
@@ -94,8 +95,6 @@ export function App(props) {
                        onClick={changeItemsToShow}/>
             </div>
             }
-
-
         </div>
     );
 }

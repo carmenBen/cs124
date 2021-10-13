@@ -7,7 +7,7 @@ export function ChecklistItem(props) {
             <input key={props.id} type="checkbox" onInput={props.checkFunction} id={props.id}
                    name={props.id} value={props.id} defaultChecked={props.completed}/>
             <label htmlFor={props.id}>{props.title}</label>
-            <button onClick={() => props.modifyTask(props.title, props.id)}><i className="fas fa-pencil-alt"/></button>
+            <button onClick={() => props.modifyTask(props.title, props.id)}>Modify</button>
         </div>
     );
 
