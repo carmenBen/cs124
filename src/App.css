@@ -1,0 +1,93 @@
+body {
+  font-family: Avenir;
+  background-color: #b2d9e3;
+}
+
+#hideButtons {
+  visibility: hidden;
+}
+
+a {
+  font-size: xx-large;
+}
+
+.fa-pencil-alt {
+  font-size: 24px;
+}
+
+#addTask {
+  font-size: x-large;
+}
+
+#modifyTask {
+  font-size: x-large;
+}
+
+h1 {
+  font-size: xx-large;
+  text-align: center;
+}
+
+input[type=button] {
+  font-family: Avenir;
+  font-size: medium;
+  background-color: #d8dde8;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 30px;
+}
+
+button {
+  height: 20px;
+}
+
+input[type=text] {
+  font-family: Avenir;
+  font-size: large;
+  width: 99%;
+  background-color: #d8dde8;
+}
+
+input[type=submit] {
+  font-family: Avenir;
+  font-size: medium;
+  background-color: #d8dde8;
+  margin-top: 10px;
+}
+
+table {
+  border: 1px solid black;
+  background-color: black;
+  width: 100%;
+}
+
+form {
+  width: 100%;
+  background-color: lightblue;
+  font-size: xx-large;
+}
+
+th {
+  border: 0px solid black;
+  background-color: #77cbda;
+  font-size: x-large;
+}
+
+input[type='checkbox'] {
+  width: 10px;
+  height: 10px;
+}
+
+input[type=radio] {
+  width: 32px;
+  height: 32px;
+}
+
+td {
+  width: 25%;
+  border: 0px solid black;
+  background-color: #cbe4ec;
+  font-size: large;
+
+}
