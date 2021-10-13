@@ -3,23 +3,18 @@ import {ChecklistItem} from "./ChecklistItem";
 
 export function Checklist(props) {
 
-
     function onCheck(e, id) {
-        const currentIndex = props.completedItems.indexOf(id);
-        props.handleChangeField(e, id, "completed", !(currentIndex > -1));
-        if (currentIndex > -1) {
-            props.changeCompletedItems(props.completedItems.filter((item) => item !== id))
-        } else {
-            props.changeCompletedItems([...props.completedItems, id]);
-        }
+        e.target.checked ? props.changeCompletedItems([...props.completedItems, id]) :
+            props.changeCompletedItems(props.completedItems.filter((item) => item !== id));
+        props.handleChangeField(id, "completed", e.target.checked);
     }
 
-    const completedItemsToRender = props.items.map((item) => (props.completedItems.indexOf(item.id) > -1) ?
+    const completedItemsToRender = props.items.map((item) => (item.completed ?
         <ChecklistItem key={item.id} id={item.id} title={item.title} completed={true}
-                       checkFunction={(e) => onCheck(e, item.id)} modifyTask={props.modifyTask}/> : undefined);
-    const incompleteItemsToRender = props.items.map((item) => (props.completedItems.indexOf(item.id) <= -1) ?
+                       checkFunction={(e) => onCheck(e, item.id)} modifyTask={props.modifyTask}/> : undefined));
+    const incompleteItemsToRender = props.items.map((item) => (!(item.completed) ?
         <ChecklistItem key={item.id} id={item.id} title={item.title} completed={false}
-                       checkFunction={(e) => onCheck(e, item.id)} modifyTask={props.modifyTask}/> : undefined);
+                       checkFunction={(e) => onCheck(e, item.id)} modifyTask={props.modifyTask}/> : undefined));
 
     return (
         <form>

@@ -2,23 +2,15 @@ import React from "react";
 import {ChecklistItem} from "./ChecklistItem";
 
 export function IncompleteTasksOnly(props) {
-    const initialCompletedItems = props.items.map((item) => item.completed ? item.id : undefined);
-    let [completedItems, setCompletedItems] = React.useState(initialCompletedItems);
-
-    function onCheck(id) {
-        const currentIndex = completedItems.indexOf(id);
-        if (currentIndex > -1) {
-            completedItems = completedItems.filter(item => item !== id);
-            setCompletedItems(completedItems);
-        } else {
-            completedItems = [...completedItems, id];
-            setCompletedItems(completedItems);
-        }
+    function onCheck(e, id) {
+        e.target.checked ? props.changeCompletedItems([...props.completedItems, id]) :
+            props.changeCompletedItems(props.completedItems.filter((item) => item !== id));
+        props.handleChangeField(id, "completed", e.target.checked);
     }
 
-    const incompleteItemsToRender = props.items.map((item) => (completedItems.indexOf(item.id) <= -1) ?
+    const incompleteItemsToRender = props.items.map((item) => (props.completedItems.indexOf(item.id) <= -1) ?
         <ChecklistItem id={item.id} title={item.title} completed={false}
-                       checkFunction={() => onCheck(item.id)}/> : undefined);
+                       checkFunction={(e) => onCheck(e, item.id)}/> : undefined);
 
     return (
         <form>

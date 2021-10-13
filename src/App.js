@@ -8,84 +8,71 @@ import {ModifyTaskPage} from "./ModifyTaskPage";
 
 export function App(props) {
 
-    let [data, setData] = useState(props.initialData);
-    let [itemsToShow, setItemsToShow] = useState("both");
+    const [data, setData] = useState(props.initialData);
+    const [itemsToShow, setItemsToShow] = useState("both");
     const initialCompletedItems = data.map((item) => item.completed ? item.id : undefined);
-    let [completedItems, setCompletedItems] = useState(initialCompletedItems);
-    let [componentsToRender, setComponentsToRender] = useState(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask} completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
+    const [completedItems, setCompletedItems] = useState(initialCompletedItems);
+    const [componentsToRender, setComponentsToRender] = useState(<Checklist items={data}
+                                                                            handleChangeField={handleChangeField}
+                                                                            modifyTask={modifyTask}
+                                                                            completedItems={completedItems}
+                                                                            changeCompletedItems={setCompletedItems}/>);
 
-    let taskButtonValue = (itemsToShow === "both" ? "Hide Completed Tasks" : "Show Completed Tasks");
-    let [showButtons, setShowButtons] = useState(true);
+    const taskButtonValue = (itemsToShow === "both" ? "Hide Completed Tasks" : "Show Completed Tasks");
+    const [showButtons, setShowButtons] = useState(true);
 
     useEffect(() => {
-        setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask} completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
+        setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
+                                         completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
         setShowButtons(true);
+        console.log(data);
     }, [data]);
 
     useEffect(() => {
-        setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask} completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
+        setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
+                                         completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
         setShowButtons(true);
+        console.log("using effect");
     }, [completedItems]);
 
-    function addNewDataPoint(e, value) {
-        e.preventDefault();
+    function addNewItem(value) {
         let newDataMember = {
             title: value,
             id: generateUniqueID(),
             completed: false,
         }
-        let newData = [...data, newDataMember];
+        const newData = [...data, newDataMember];
         setData(newData);
     }
 
-    function handleChangeField(e, id, field, value) {
-        e.preventDefault();
-        console.log("handling chang efield");
-        console.log(id, value);
-        console.log(data);
-        let newData = data.map(item => id === item.id ? {...item, [field]: value} : item);
+    function handleChangeField(id, field, value) {
+        console.log("value: " + value);
+        const newData = data.map(item => id === item.id ? {...item, [field]: value} : item);
         setData(newData);
-        console.log(data);
-    }
-
-    function renderAddTaskButton() {
-        return (
-            <input type="button" value="Add New Task" onClick={renderAddTaskPage}/>);
-    }
-
-    function renderChangeItemsButton() {
-        return (
-            <input type="button" value={taskButtonValue}
-                   onClick={changeItemsToShow}/>);
     }
 
     function deleteCompletedItems() {
         console.log(completedItems);
+        console.log(data);
         setData(data.filter(item => !(item.completed)));
         setCompletedItems([]);
+        console.log("deleted items");
         console.log(completedItems);
     }
 
-    function renderDeleteItemsButton() {
-        if (completedItems.length > 0) {
-            return (
-                <input type="button" value={"Delete Completed Items"}
-                       onClick={deleteCompletedItems}/>
-            );
-        }
-    }
-
     function renderAddTaskPage() {
-        setComponentsToRender(<AddTaskPage addNewDataPoint={addNewDataPoint}/>);
+        setComponentsToRender(<AddTaskPage addNewDataPoint={addNewItem}/>);
         setShowButtons(!showButtons);
     }
 
     function changeItemsToShow() {
         setItemsToShow((itemsToShow === "incomplete" ? "both" : "incomplete"));
         if (itemsToShow === "both") {
-            setComponentsToRender(<IncompleteTasksOnly items={data} />);
+            setComponentsToRender(<IncompleteTasksOnly completedItems={completedItems} changeCompletedItems={setCompletedItems} handleChangeField={handleChangeField} items={data}/>);
         } else {
-            setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask} completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
+            setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
+                                             completedItems={completedItems}
+                                             changeCompletedItems={setCompletedItems}/>);
         }
     }
 
@@ -97,9 +84,17 @@ export function App(props) {
     return (
         <div className="App">
             {componentsToRender}
-            {showButtons ? renderAddTaskButton() : undefined}
-            {showButtons ? renderChangeItemsButton() : undefined}
-            {showButtons ? renderDeleteItemsButton() : undefined}
+            {showButtons && <div>
+                <input type="button" value="Add New Task" onClick={renderAddTaskPage}/>
+                {completedItems.length > 0 &&
+                <input type="button" value={"Delete Completed Items"}
+                       onClick={deleteCompletedItems}/>
+                }
+                <input type="button" value={taskButtonValue}
+                       onClick={changeItemsToShow}/>
+            </div>
+            }
+
 
         </div>
     );
