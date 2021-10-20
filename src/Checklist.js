@@ -11,10 +11,10 @@ export function Checklist(props) {
 
     const completedItemsToRender = props.items.map((item) => (item.completed ?
         <ChecklistItem key={item.id} id={item.id} title={item.title} completed={true}
-                       checkFunction={(e) => onCheck(e, item.id)} modifyTask={props.modifyTask}/> : undefined));
+                       checkFunction={(e) => onCheck(e, item.id)} modifyTask={props.modifyTask} priority={item.priority}/> : undefined));
     const incompleteItemsToRender = props.items.map((item) => (!(item.completed) ?
         <ChecklistItem key={item.id} id={item.id} title={item.title} completed={false}
-                       checkFunction={(e) => onCheck(e, item.id)} modifyTask={props.modifyTask}/> : undefined));
+                       checkFunction={(e) => onCheck(e, item.id)} modifyTask={props.modifyTask} priority={item.priority}/> : undefined));
 
     return (
         <form>

@@ -1,14 +1,16 @@
 import './App.css';
 import {Checklist} from './Checklist.js'
 import {AddTaskPage} from "./AddTaskPage";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {IncompleteTasksOnly} from "./IncompleteTasksOnly";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {ModifyTaskPage} from "./ModifyTaskPage";
 import {useCollection} from "react-firebase-hooks/firestore";
+import firebase from "firebase/compat";
 
 export function App(props) {
-    const [value, loading, error] = useCollection(props.collection);
+    const [sortValue, setSortValue] = useState("title");
+    const [value, loading, error] = useCollection(props.collection.orderBy(sortValue, "asc"));
     let data = [];
     if (value !== undefined) {
         data = value.docs.map(doc =>
@@ -38,13 +40,24 @@ export function App(props) {
         setShowButtons(true);
     }, [completedItems]);
 
-    function addNewItem(value) {
-        let newDataMember = {
-            title: value,
-            id: generateUniqueID(),
-            completed: false,
-        }
-        props.collection.doc(newDataMember.id).set(newDataMember);
+    function addNewItem(value, priority) {
+        const id = generateUniqueID();
+        props.collection.doc(id).set(
+            {
+                title: value,
+                id: id,
+                completed: false,
+                priority: priority,
+                created: firebase.database.ServerValue.TIMESTAMP
+            }
+        );
+        console.log(priority);
+    }
+
+    function returnToHomePage() {
+        setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
+                                         completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
+        setShowButtons(true);
     }
 
     function handleChangeField(id, field, value) {
@@ -64,7 +77,7 @@ export function App(props) {
 
     function renderAddTaskPage() {
         console.log("trying to render add task page");
-        setComponentsToRender(<AddTaskPage addNewDataPoint={addNewItem}/>);
+        setComponentsToRender(<AddTaskPage addNewDataPoint={addNewItem} cancel={returnToHomePage}/>);
         setShowButtons(!showButtons);
     }
 
@@ -82,13 +95,25 @@ export function App(props) {
     }
 
     function modifyTask(taskName, id) {
-        setComponentsToRender(<ModifyTaskPage handleChangeField={handleChangeField} taskName={taskName} id={id}/>)
+        setComponentsToRender(<ModifyTaskPage handleChangeField={handleChangeField} taskName={taskName} id={id} cancel={returnToHomePage}/>)
         setShowButtons(false);
     }
 
     return (
         <div className="App">
-            <h1>To Do List</h1>
+            <h1>
+                To Do List <br/>
+                {showButtons &&
+                <div>Sort by:
+                <select name="sortBy" id="sortByDropdown"
+                        onChange={() => setSortValue(document.getElementById("sortByDropdown").value)}>
+                    <option value="title">Title</option>
+                    <option value="priority">Priority</option>
+                    <option value="created">Date created</option>
+                </select></div>
+                }
+            </h1>
+
             {componentsToRender}
             {showButtons && <div>
                 <input type="button" value="Add New Task" onClick={renderAddTaskPage}/>
