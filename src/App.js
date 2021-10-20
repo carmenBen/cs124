@@ -5,10 +5,15 @@ import {useEffect, useState} from "react";
 import {IncompleteTasksOnly} from "./IncompleteTasksOnly";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {ModifyTaskPage} from "./ModifyTaskPage";
+import {useCollection} from "react-firebase-hooks/firestore";
 
 export function App(props) {
-
-    const [data, setData] = useState(props.initialData);
+    const [value, loading, error] = useCollection(props.collection);
+    let data = [];
+    if (value !== undefined) {
+        data = value.docs.map(doc =>
+            doc.data());
+    }
     const [itemsToShow, setItemsToShow] = useState("both");
     const initialCompletedItems = data.map((item) => item.completed ? item.id : undefined);
     const [completedItems, setCompletedItems] = useState(initialCompletedItems);
@@ -25,7 +30,7 @@ export function App(props) {
         setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
                                          completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
         setShowButtons(true);
-    }, [data]);
+    }, [value]);
 
     useEffect(() => {
         setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
@@ -39,26 +44,26 @@ export function App(props) {
             id: generateUniqueID(),
             completed: false,
         }
-        const newData = [...data, newDataMember];
-        setData(newData);
+        props.collection.doc(newDataMember.id).set(newDataMember);
     }
 
     function handleChangeField(id, field, value) {
-        console.log("value: " + value);
-        const newData = data.map(item => id === item.id ? {...item, [field]: value} : item);
-        setData(newData);
+        props.collection.doc(id).update({
+            [field]: value,
+        });
+    }
+
+    function handleDelete(id) {
+        props.collection.doc(id).delete();
     }
 
     function deleteCompletedItems() {
-        console.log(completedItems);
-        console.log(data);
-        setData(data.filter(item => !(item.completed)));
+        data.forEach(item => item.completed && handleDelete(item.id));
         setCompletedItems([]);
-        console.log("deleted items");
-        console.log(completedItems);
     }
 
     function renderAddTaskPage() {
+        console.log("trying to render add task page");
         setComponentsToRender(<AddTaskPage addNewDataPoint={addNewItem}/>);
         setShowButtons(!showButtons);
     }
