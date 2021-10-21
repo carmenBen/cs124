@@ -104,7 +104,7 @@ export function App(props) {
             <h1>
                 To Do List <br/>
                 {showButtons &&
-                <div>Sort by:
+                <div id="sort-by">Sort by:
                 <select name="sortBy" id="sortByDropdown"
                         onChange={() => setSortValue(document.getElementById("sortByDropdown").value)}>
                     <option value="title">Title</option>

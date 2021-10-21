@@ -46,6 +46,8 @@ input[type=text] {
   font-family: Avenir;
   font-size: large;
   width: 99%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   background-color: #d8dde8;
 }
 
@@ -89,5 +91,16 @@ td {
   border: 0px solid black;
   background-color: #cbe4ec;
   font-size: large;
+
+}
+
+select {
+  font-size: medium;
+  background-color: #d8dde8;
+  font-family: Avenir;
+}
+
+#sort-by {
+  font-size: medium;
 
 }

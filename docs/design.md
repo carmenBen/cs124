@@ -38,7 +38,7 @@ We asked three separate users to click through our webpages and talk through the
 ![](task1_1.png)
 ![](task1_2.png)
 ## In a non-empty list, create an item named "Eat Lunch"
-![](task1.png)
+![](task1_2.png)
 ![](task2_1.png)
 ![](task2_2.png)
 ## Mark the item named "Call Mom" completed (assumes there exists an item named "Call Mom").
