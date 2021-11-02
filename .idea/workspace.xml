@@ -1,41 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="ChangeListManager">
-    <list default="true" id="8fcafe31-ecfa-48a3-af9e-55020fd28df3" name="Changes" comment="App is working correctly!">
-      <change beforePath="$PROJECT_DIR$/src/AddTaskPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddTaskPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Checklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checklist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChecklistItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChecklistItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IncompleteTasksOnly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/IncompleteTasksOnly.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ModifyTaskPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModifyTaskPage.js" afterDir="false" />
-=======
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fdd984f-1359-4132-acb8-ce13611e1f5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" />
->>>>>>> b3731c4fe96d61e139ac6a4404d1eeb33fc903a5
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddTaskPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddTaskPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Checklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checklist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChecklistItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChecklistItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IncompleteTasksOnly.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ModifyTaskPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModifyTaskPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-<<<<<<< HEAD
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
-=======
->>>>>>> b3731c4fe96d61e139ac6a4404d1eeb33fc903a5
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -47,37 +33,16 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-<<<<<<< HEAD
-  <component name="ProjectId" id="1ymNga2WQPP5jd0gJuOWaUTJS4k" />
+  <component name="ProjectId" id="1yO4T928JhE6mgazHg86NcTdBRb" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-=======
-  <component name="ProjectId" id="1yO4T928JhE6mgazHg86NcTdBRb" />
->>>>>>> b3731c4fe96d61e139ac6a4404d1eeb33fc903a5
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-<<<<<<< HEAD
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path" value="node" />
-    <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RunManager" selected="npm.npm start">
-    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
-=======
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -95,7 +60,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.install gh-pages">
+  <component name="RunManager" selected="npm.npm start">
     <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -114,7 +79,6 @@
       </scripts>
       <node-interpreter value="project" />
       <envs />
->>>>>>> b3731c4fe96d61e139ac6a4404d1eeb33fc903a5
       <method v="2" />
     </configuration>
     <configuration name="npm start" type="js.build_tools.npm">
@@ -127,8 +91,6 @@
       <envs />
       <method v="2" />
     </configuration>
-<<<<<<< HEAD
-=======
     <list>
       <item itemvalue="npm.npm start" />
       <item itemvalue="npm.install gh-pages" />
@@ -139,47 +101,10 @@
         <item itemvalue="npm.deploy" />
       </list>
     </recent_temporary>
->>>>>>> b3731c4fe96d61e139ac6a4404d1eeb33fc903a5
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="8fcafe31-ecfa-48a3-af9e-55020fd28df3" name="Changes" comment="" />
-      <created>1632852915291</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1632852915291</updated>
-      <workItem from="1632852916944" duration="5372000" />
-      <workItem from="1632868431699" duration="9806000" />
-      <workItem from="1632959312336" duration="11797000" />
-      <workItem from="1633730420091" duration="14000" />
-      <workItem from="1634100693878" duration="1421000" />
-      <workItem from="1634102491879" duration="766000" />
-    </task>
-    <task id="LOCAL-00001" summary="Created most of the framework">
-      <created>1632897532014</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1632897532014</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Set up some states, not all are working (data won't update correctly)">
-      <created>1633042119221</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1633042119221</updated>
-    </task>
-    <task id="LOCAL-00003" summary="App is working correctly!">
-      <created>1633404103893</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1633404103893</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
-=======
       <changelist id="9fdd984f-1359-4132-acb8-ce13611e1f5b" name="Changes" comment="" />
       <created>1632109305700</created>
       <option name="number" value="Default" />
@@ -189,8 +114,9 @@
       <workItem from="1632169555060" duration="33000" />
       <workItem from="1633404389864" duration="6131000" />
       <workItem from="1633412524524" duration="2676000" />
+      <workItem from="1635788991309" duration="4035000" />
+      <workItem from="1635832707491" duration="3563000" />
     </task>
->>>>>>> b3731c4fe96d61e139ac6a4404d1eeb33fc903a5
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,25 +134,7 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-<<<<<<< HEAD
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Created most of the framework" />
-    <MESSAGE value="Set up some states, not all are working (data won't update correctly)" />
-    <MESSAGE value="App is working correctly!" />
-    <option name="LAST_COMMIT_MESSAGE" value="App is working correctly!" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>20</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-=======
->>>>>>> b3731c4fe96d61e139ac6a4404d1eeb33fc903a5
 </project>

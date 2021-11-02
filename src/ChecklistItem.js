@@ -11,8 +11,10 @@ export function ChecklistItem(props) {
         <div className={"checklist"}>
             <input key={props.id} type="checkbox" onInput={props.checkFunction} id={props.id}
                    name={props.id} value={props.id} defaultChecked={props.completed}/>
-            <label htmlFor={props.id}>{props.title + " (" + priorities[props.priority] + ") "}</label>
-            <button onClick={() => props.modifyTask(props.title, props.id)}>Modify</button>
+            {/*<div id={"checklist-item-margin"}>*/}
+                <label htmlFor={props.id}>{props.title + " (" + priorities[props.priority] + ") "}</label>
+                <button onClick={() => props.modifyTask(props.title, props.id)}>Modify</button>
+            {/*</div>*/}
         </div>
     );
 
