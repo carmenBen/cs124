@@ -19,7 +19,6 @@ export function App(props) {
     const [currentPage, setCurrentPage] = useState("checklist");
     const [currentTaskNameId, setCurrentTaskNameId] = useState([]);
     const taskButtonValue = (!incompleteTasksOnly ? "Hide Completed Tasks" : "Show Completed Tasks");
-    const [showButtons, setShowButtons] = useState(true);
 
     function addNewItem(value, priority) {
         const id = generateUniqueID();
@@ -74,7 +73,7 @@ export function App(props) {
         <div className="App">
             <h1>
                 To Do List <br/>
-                {showButtons &&
+                {currentPage === "checklist" &&
                 <div id="sort-by">Sort by:
                     <select name="sortBy" id="sortByDropdown"
                             onChange={(e) => setSortValue(e.target.value)}>
