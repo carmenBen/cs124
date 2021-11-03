@@ -21,6 +21,8 @@ This is our first iteration of separate pages to add tasks, modify tasks, and ho
 ## Cleaning up final design
 This is what we decided on for our final design. We focused on making it modularized, easy to use, and as intuitive as possible. We made our labels descriptive while minimizing text so that users wouldn't have to read very much, but could just skim to get an easy understanding of what to do.
 
+In this next iteration, we decided to add in cancel buttons for add task and modify task pages. We also added a dropdown for priority when adding the task to restrict user options for selecting priority. These priorities are listed next to the task name. Additionally, we added a dropdown to select how to sort the to do list. The options are by title, creation date, and priority. In keeping to the 80/20 rule, we decided to only allow users to sort in the ascending direction.
+
 ![](finalDesignvFinal.png)
 
 # User testing
@@ -28,13 +30,15 @@ We asked three separate users to click through our webpages and talk through the
 
 We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We found that using a pencil icon as our modify button was confusing to some of our users. We decided to change our button to feature the text "modify" instead. 
 
+We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We found that they occasionally clicked add and modify tasks without meaning to, so we added in the option to cancel these operations. We also found that they preferred a dropdown for selecting what to sort by, as well as priority, since it gave them their options clearly and quickly. We found that they didn't want to sort in a descending order and much preferred to sort ascending, so we decided to keep ascending as their only option to simplify the app.
+
 # Final design
 ## In an empty list, create an item named "Buy new John Grisham book"
 ![](task1.png)
 ![](task1_1.png)
 ![](task1_2.png)
 ## In a non-empty list, create an item named "Eat Lunch"
-![](task1.png)
+![](task1_2.png)
 ![](task2_1.png)
 ![](task2_2.png)
 ## Mark the item named "Call Mom" completed (assumes there exists an item named "Call Mom").

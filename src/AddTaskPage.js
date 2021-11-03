@@ -1,13 +1,22 @@
 import React from "react";
 
 export function AddTaskPage(props) {
+    const [title, setTitle] = React.useState("");
+    const [priority, setPriority] = React.useState("1");
 
     return (
         <div>
             <label id="addTask" htmlFor="newTask">Add New Task:</label>
-            <input type="text" id="newTask" name="newTask"/>
+            <input type="text" id="newTask" name="newTask" onChange={(e) => setTitle(e.target.value)}/>
+            <select name="priority" id="priority-dropdown" onChange={(e) => setPriority(e.target.value)}>
+                <option value="1">High</option>
+                <option value="2">Medium</option>
+                <option value="3">Low</option>
+            </select>
+            <input type="button" value="Cancel"
+                   onClick={() => props.cancel()}/>
             <input type="button" value="Add"
-                   onClick={() => props.addNewDataPoint(document.getElementById("newTask").value)}/>
+                   onClick={(e) => props.addNewDataPoint(title, priority)}/>
         </div>
     );
 }

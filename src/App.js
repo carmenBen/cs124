@@ -1,100 +1,111 @@
 import './App.css';
 import {Checklist} from './Checklist.js'
 import {AddTaskPage} from "./AddTaskPage";
-import {useEffect, useState} from "react";
-import {IncompleteTasksOnly} from "./IncompleteTasksOnly";
+import React, {useEffect, useState} from "react";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {ModifyTaskPage} from "./ModifyTaskPage";
+import {useCollection} from "react-firebase-hooks/firestore";
+import firebase from "firebase/compat";
 
 export function App(props) {
+    const [sortValue, setSortValue] = useState("title");
+    const [value, loading, error] = useCollection(props.collection.orderBy(sortValue, "asc"));
+    let data = [];
+    if (value !== undefined) {
+        data = value.docs.map(doc =>
+            doc.data());
+    }
+    const [incompleteTasksOnly, setIncompleteTasksOnly] = useState(false);
+    const [currentPage, setCurrentPage] = useState("checklist");
+    const [currentTaskNameId, setCurrentTaskNameId] = useState([]);
+    const taskButtonValue = (!incompleteTasksOnly ? "Hide Completed Tasks" : "Show Completed Tasks");
 
-    const [data, setData] = useState(props.initialData);
-    const [itemsToShow, setItemsToShow] = useState("both");
-    const initialCompletedItems = data.map((item) => item.completed ? item.id : undefined);
-    const [completedItems, setCompletedItems] = useState(initialCompletedItems);
-    const [componentsToRender, setComponentsToRender] = useState(<Checklist items={data}
-                                                                            handleChangeField={handleChangeField}
-                                                                            modifyTask={modifyTask}
-                                                                            completedItems={completedItems}
-                                                                            changeCompletedItems={setCompletedItems}/>);
+    function addNewItem(value, priority) {
+        const id = generateUniqueID();
+        props.collection.doc(id).set(
+            {
+                title: value,
+                id: id,
+                completed: false,
+                priority: priority,
+                created: firebase.database.ServerValue.TIMESTAMP
+            }
+        );
+        setCurrentPage("checklist");
+    }
 
-    const taskButtonValue = (itemsToShow === "both" ? "Hide Completed Tasks" : "Show Completed Tasks");
-    const [showButtons, setShowButtons] = useState(true);
-
-    useEffect(() => {
-        setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
-                                         completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
-        setShowButtons(true);
-    }, [data]);
-
-    useEffect(() => {
-        setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
-                                         completedItems={completedItems} changeCompletedItems={setCompletedItems}/>);
-        setShowButtons(true);
-    }, [completedItems]);
-
-    function addNewItem(value) {
-        let newDataMember = {
-            title: value,
-            id: generateUniqueID(),
-            completed: false,
-        }
-        const newData = [...data, newDataMember];
-        setData(newData);
+    function returnToHomePage() {
+        setCurrentPage("checklist");
     }
 
     function handleChangeField(id, field, value) {
-        console.log("value: " + value);
-        const newData = data.map(item => id === item.id ? {...item, [field]: value} : item);
-        setData(newData);
+        props.collection.doc(id).update({
+            [field]: value,
+        });
+        setCurrentPage("checklist");
+    }
+
+    function handleDelete(id) {
+        props.collection.doc(id).delete();
+        setCurrentPage("checklist");
     }
 
     function deleteCompletedItems() {
-        console.log(completedItems);
-        console.log(data);
-        setData(data.filter(item => !(item.completed)));
-        setCompletedItems([]);
-        console.log("deleted items");
-        console.log(completedItems);
+        data.forEach(item => item.completed && handleDelete(item.id));
+        setCurrentPage("checklist");
     }
 
     function renderAddTaskPage() {
-        setComponentsToRender(<AddTaskPage addNewDataPoint={addNewItem}/>);
-        setShowButtons(!showButtons);
+        setCurrentPage("addTask");
     }
 
     function changeItemsToShow() {
-        setItemsToShow((itemsToShow === "incomplete" ? "both" : "incomplete"));
-        if (itemsToShow === "both") {
-            setComponentsToRender(<IncompleteTasksOnly completedItems={completedItems}
-                                                       changeCompletedItems={setCompletedItems}
-                                                       handleChangeField={handleChangeField} items={data}/>);
-        } else {
-            setComponentsToRender(<Checklist items={data} handleChangeField={handleChangeField} modifyTask={modifyTask}
-                                             completedItems={completedItems}
-                                             changeCompletedItems={setCompletedItems}/>);
-        }
+        setIncompleteTasksOnly(!incompleteTasksOnly);
+        setCurrentPage("checklist");
     }
 
     function modifyTask(taskName, id) {
-        setComponentsToRender(<ModifyTaskPage handleChangeField={handleChangeField} taskName={taskName} id={id}/>)
-        setShowButtons(false);
+        setCurrentPage("modifyTask");
+        setCurrentTaskNameId([taskName, id]);
     }
 
     return (
         <div className="App">
-            <h1>To Do List</h1>
-            {componentsToRender}
-            {showButtons && <div>
-                <input type="button" value="Add New Task" onClick={renderAddTaskPage}/>
-                {completedItems.length > 0 &&
-                <input type="button" value={"Delete Completed Items"}
-                       onClick={deleteCompletedItems}/>
+            <h1>
+                To Do List <br/>
+                {currentPage === "checklist" &&
+                <div id="sort-by">Sort by:
+                    <select name="sortBy" id="sortByDropdown"
+                            onChange={(e) => setSortValue(e.target.value)}>
+                        <option value="title">Title</option>
+                        <option value="priority">Priority</option>
+                        <option value="created">Date created</option>
+                    </select></div>
                 }
-                <input type="button" value={taskButtonValue}
-                       onClick={changeItemsToShow}/>
-            </div>
-            }
+            </h1>
+
+            {currentPage === "checklist" &&
+            <div>
+                <Checklist items={data}
+                           handleChangeField={handleChangeField}
+                           modifyTask={modifyTask}
+                           completedItems={data.filter((task) => task.completed)}
+                           incompleteTasksOnly={incompleteTasksOnly}
+                />
+                <div>
+                    <input type="button" value="Add New Task" onClick={renderAddTaskPage}/>
+                    {(data.filter((task) => task.completed)).length > 0 &&
+                    <input type="button" value={"Delete Completed Items"}
+                           onClick={deleteCompletedItems}/>
+                    }
+                    <input type="button" value={taskButtonValue}
+                           onClick={changeItemsToShow}/>
+                </div>
+            </div>}
+            {currentPage === "modifyTask" && <ModifyTaskPage handleChangeField={handleChangeField}
+                                                             taskName={currentTaskNameId[0]} id={currentTaskNameId[1]}
+                                                             cancel={returnToHomePage}/>}
+            {currentPage === "addTask" && <AddTaskPage addNewDataPoint={addNewItem} cancel={returnToHomePage}/>}
         </div>
     );
 }
