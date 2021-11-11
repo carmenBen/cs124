@@ -8,7 +8,7 @@ export function AddTaskPage(props) {
         <div>
             <label id="addTask" htmlFor="newTask">Add New Task:</label>
             <input type="text" id="newTask" name="newTask" onChange={(e) => setTitle(e.target.value)}/>
-            <select name="priority" id="priority-dropdown" onChange={(e) => setPriority(e.target.value)}>
+            <select name="priority" id="priority-dropdown" aria-label="dropdown to select priority" onChange={(e) => setPriority(e.target.value)}>
                 <option value="1">High</option>
                 <option value="2">Medium</option>
                 <option value="3">Low</option>
