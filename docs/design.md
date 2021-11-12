@@ -77,3 +77,7 @@ We are really proud of our table format because we believe separating our comple
 Finally, we are very proud of the way we chose to have a separate page and UI for adding new tasks and editing tasks. We believe that keeping this separate made our design clearer and simpler, and furthermore having the new task and edit task page be very similar also allows users to understand these pages easily.
 
 In lab 4, we're proud of the multiple list functionality, since this took a while to implement. We're also proud of the responsive design components and how we've grown in our ability to use CSS to produce something that's quite pretty.
+
+# Accessibility Videos
+https://drive.google.com/file/d/1VpTwc0aN9i3gXtVlyVz_iAGYEdjZnNnb/view?usp=sharing
+https://drive.google.com/file/d/1W-TJl1KOlDrw8Mrcf2Z5IR4WL4Gk-qQM/view?usp=sharing
