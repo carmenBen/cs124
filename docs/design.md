@@ -5,7 +5,12 @@ We decided on creating separate pages for adding items, modifying items, and the
 ## Modifying items
 ![](task4_1.png)
 ## Original list
-![](task3_1.png)
+![](homepage.png)
+![](otherList.png)
+## Adding a new list
+![](addList.png)
+## Deleting a list
+![](deleteList.png)
 
 # Alternative designs
 ## Initial ideas
@@ -31,6 +36,8 @@ We asked three separate users to click through our webpages and talk through the
 We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We found that using a pencil icon as our modify button was confusing to some of our users. We decided to change our button to feature the text "modify" instead. 
 
 We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We found that they occasionally clicked add and modify tasks without meaning to, so we added in the option to cancel these operations. We also found that they preferred a dropdown for selecting what to sort by, as well as priority, since it gave them their options clearly and quickly. We found that they didn't want to sort in a descending order and much preferred to sort ascending, so we decided to keep ascending as their only option to simplify the app.
+
+We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We found that they didn't want to scroll in landscape view so we implemented responsive design. We also found that they found it intuitive to have the delete list and add list buttons right next to the list dropdown as icons rather than spelled out.
 
 # Final design
 ## In an empty list, create an item named "Buy new John Grisham book"
@@ -62,7 +69,11 @@ We faced some trouble working on the actual CSS to format some of the items that
 
 When creating our React app we faced issues updating our states because we didn't realize that updating our state was done asynchronously, and therefore our page was being re-rendered before our states were being updated.
 
+In lab 4, we really struggled with restructuring the Firebase data to accommodate for the multiple lists. We also had a hard time with some of the styling for responsive design.
+
 # What we're proud of
 We are really proud of our table format because we believe separating our complete and incomplete tasks made our design a lot more usable. We also think our color choices really emphasize our design and add to the aesthetics of our page which also adds to the perception of usability.
 
 Finally, we are very proud of the way we chose to have a separate page and UI for adding new tasks and editing tasks. We believe that keeping this separate made our design clearer and simpler, and furthermore having the new task and edit task page be very similar also allows users to understand these pages easily.
+
+In lab 4, we're proud of the multiple list functionality, since this took a while to implement. We're also proud of the responsive design components and how we've grown in our ability to use CSS to produce something that's quite pretty.
