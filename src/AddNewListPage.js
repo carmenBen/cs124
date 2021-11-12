@@ -5,7 +5,7 @@ export function AddNewListPage(props) {
 
     return (
         <div>
-            <label id="addList" htmlFor="newList">Add New List:</label>
+            <h1>Add New List:</h1>
             <input type="text" id="newList" name="newList"
                    onChange={(e) => setTitle(e.target.value)}/>
             <input type="button" value="Cancel"

@@ -103,7 +103,6 @@ export function App(props) {
                 id: id,
             }
         );
-        console.log("added new list");
         setCurrentList(lists[0].id);
         setCurrentPage("checklist");
     }
@@ -122,10 +121,7 @@ export function App(props) {
     return (
         <div className="App">
             <h1>
-                {/*{console.log("current list: ", currentList)}*/}
-                {/*{console.log("lists: ", lists)}*/}
-                {/*{console.log("loading: ", loading)}*/}
-                {!loading && lists.filter(list => list.id === currentList)[0].title}
+                {!loading && currentPage !== "newList" && lists.filter(list => list.id === currentList)[0].title}
                 {/*//<br/>*/}
                 {currentPage === "checklist" &&
                 <div className="selectDropdowns">

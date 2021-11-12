@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fdd984f-1359-4132-acb8-ce13611e1f5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AddNewListPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConfirmDeletePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddTaskPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddTaskPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddNewListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddNewListPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChecklistItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChecklistItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ModifyTaskPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModifyTaskPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +110,7 @@
       <workItem from="1635832707491" duration="4690000" />
       <workItem from="1636141488553" duration="587000" />
       <workItem from="1636409012813" duration="6788000" />
-      <workItem from="1636654615923" duration="7719000" />
+      <workItem from="1636654615923" duration="8000000" />
     </task>
     <servers />
   </component>
