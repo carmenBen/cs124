@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fdd984f-1359-4132-acb8-ce13611e1f5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/addList.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/deleteList.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/homepage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/otherList.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/design.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/design.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ListSelector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddTaskPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddTaskPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Checklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checklist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConfirmDeletePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConfirmDeletePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +113,9 @@
       <workItem from="1635832707491" duration="4690000" />
       <workItem from="1636141488553" duration="587000" />
       <workItem from="1636409012813" duration="6788000" />
-      <workItem from="1636654615923" duration="8521000" />
+      <workItem from="1636654615923" duration="8616000" />
+      <workItem from="1636740307524" duration="10000" />
+      <workItem from="1637184120349" duration="4813000" />
     </task>
     <servers />
   </component>

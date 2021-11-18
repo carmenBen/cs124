@@ -3,6 +3,7 @@ import React from "react";
 export function AddTaskPage(props) {
     const [title, setTitle] = React.useState("");
     const [priority, setPriority] = React.useState("1");
+    console.log("in new task page");
 
     return (
         <div>
