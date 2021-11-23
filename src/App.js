@@ -10,17 +10,11 @@ export function App(props) {
     const [currentPage, setCurrentPage] = useState("checklist");
 
     function changeCurrentPage(newPage) {
-        console.log("new page ", newPage);
         setCurrentPage(newPage);
-        console.log("current page ", currentPage);
     }
 
     function changeCurrentList(id) {
         setCurrentList(id);
-        console.log("initial current list: ", currentList);
-        console.log("changing current list");
-        console.log("new list id: ", id);
-        console.log("current list: ", currentList);
     }
 
     return (
