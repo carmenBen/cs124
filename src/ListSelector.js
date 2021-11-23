@@ -42,7 +42,7 @@ export function ListSelector(props) {
             {props.currentPage === "checklist" && <div id="sort-by">Select a list:
                 <select name="listSelector" aria-label="dropdown to select list" id="listSelectorDropdown"
                         onChange={(e) => props.changeCurrentList(e.target.value)}>
-                    {props.currentList === null && <option disabled selected value>Select a list...</option>}
+                    {props.currentList === null && <option disabled selected value>Add your first list...</option>}
                     {lists.map(item => <option value={item.id}
                                                selected={item.id === props.currentList}>{item.title}</option>)}
                 </select>
