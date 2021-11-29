@@ -7,6 +7,11 @@ body {
   visibility: hidden;
 }
 
+.error {
+  color: red;
+  font-weight: bold;
+}
+
 a {
   font-size: xx-large;
 }

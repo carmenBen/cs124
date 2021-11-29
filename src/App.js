@@ -2,8 +2,73 @@ import './App.css';
 import {Checklist} from './Checklist.js'
 import React, {useState} from "react";
 import {ListSelector} from "./ListSelector";
+import {useAuthState} from "react-firebase-hooks/auth";
+import firebase from "firebase/compat";
+import {useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth';
 
-export function App(props) {
+
+function App(props) {
+    const [user, loading, error] = useAuthState(props.auth);
+
+    function verifyEmail() {
+        console.log("trying verifying email");
+        user.sendEmailVerification();
+    }
+
+    return <div>
+        {loading && <h1>Loading now</h1>}
+        {user && <div>
+            <SignedInApp initialData={props.initialData} collection={props.collection} auth={props.auth} user={user}/>
+            <button onClick={() => props.auth.signOut()}>Sign Out</button>
+        </div>}
+        {user && !user.emailVerified && <button onClick={verifyEmail}>Validate Email</button>}
+        {!user && <div>
+            <SignIn auth={props.auth}/>
+            <SignUp auth={props.auth}/>
+        </div>}
+    </div>
+}
+
+function SignUp(props) {
+    const [createUserWithEmailAndPassword, userCredential, loading, error] = useCreateUserWithEmailAndPassword(props.auth);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    console.log(error);
+
+    return <div>{!loading && <div>
+        <label htmlFor="email">Email:</label>
+        <input type="text" id="email" name="email" onInput={e => setEmail(e.target.value)}/><br/><br/>
+        <label htmlFor="password">Password:</label>
+        <input type="password" id="password" name="password" onInput={e => setPassword(e.target.value)}/><br/><br/>
+        <button onClick={() => createUserWithEmailAndPassword(email, password)}>Sign Up</button>
+        {error && <div className="error">{error.message}</div>}
+    </div>
+    }
+    </div>
+}
+
+function SignIn(props) {
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    const [signInWithEmailAndPassword, userCredential, loading, error] = useSignInWithEmailAndPassword(props.auth);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    console.log(error);
+
+
+    return <div>
+        <label htmlFor="signInEmail">Email:</label>
+        <input type="text" id="signInEmail" name="email" onInput={e => setEmail(e.target.value)}/><br/><br/>
+        <label htmlFor="signInPassword">Password:</label>
+        <input type="password" id="signInPassword" name="password"
+               onInput={e => setPassword(e.target.value)}/><br/><br/>
+        <button onClick={() => signInWithEmailAndPassword(email, password)}>Sign In</button>
+        <button onClick={() => props.auth.signInWithPopup(googleProvider)}>Sign in With Google</button>
+        {!loading && error && <div className="error">{error.message}</div>}
+    </div>
+}
+
+
+export function SignedInApp(props) {
 
     const [sortValue, setSortValue] = useState("title");
     const [currentList, setCurrentList] = useState(null);
@@ -22,7 +87,7 @@ export function App(props) {
             <h1>
                 <ListSelector currentList={currentList} changeCurrentList={changeCurrentList}
                               collection={props.collection} changeCurrentPage={changeCurrentPage}
-                              currentPage={currentPage}
+                              currentPage={currentPage} user={props.user}
                 />
                 {currentPage === "checklist" && currentList !== null &&
                 <div className="selectDropdowns">
@@ -47,8 +112,8 @@ export function App(props) {
                            currentPage={currentPage}
                 />
 
-        </div>}
-                </div>
+            </div>}
+        </div>
     );
 }
 

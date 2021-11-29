@@ -5,7 +5,7 @@ import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {AddNewListPage} from "./AddNewListPage";
 
 export function ListSelector(props) {
-    const [listValues, loading, error] = useCollection(props.collection);
+    const [listValues, loading, error] = useCollection(props.collection.where('owner', "==", props.user.uid));
     let lists = [];
     if (listValues !== undefined) {
         lists = listValues.docs.map(doc =>
@@ -18,6 +18,7 @@ export function ListSelector(props) {
             {
                 title: title,
                 id: id,
+                owner: props.user.uid
             }
         ).then(() => {
                 // list doesn't exist yet, so wait for it to be created to change current list
