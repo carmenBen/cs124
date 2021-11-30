@@ -9,23 +9,24 @@ import {useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword} from '
 
 function App(props) {
     const [user, loading, error] = useAuthState(props.auth);
+    const [signUp, setSignUp] = useState(false);
 
-    function verifyEmail() {
-        console.log("trying verifying email");
-        user.sendEmailVerification();
-    }
-
-    return <div>
+    return <div className="App">
         {loading && <h1>Loading now</h1>}
         {user && <div>
             <SignedInApp initialData={props.initialData} collection={props.collection} auth={props.auth} user={user}/>
-            Signed in as {user.email} <br/>
-            <button onClick={() => props.auth.signOut()}>Sign Out</button>
         </div>}
-        {user && !user.emailVerified && <button onClick={verifyEmail}>Validate Email</button>}
         {!user && <div>
-            <SignIn auth={props.auth}/>
-            <SignUp auth={props.auth}/>
+            {signUp ? <div>
+                    <SignUp auth={props.auth}/><br/><br/>
+                    <div className="miscText">Returning user?</div>
+                    <button onClick={() => setSignUp(!signUp)}>Sign in</button>
+            </div> :
+                <div>
+                    <SignIn auth={props.auth}/><br/><br/>
+                    <div className="miscText">New user?</div>
+                    <button onClick={() => setSignUp(!signUp)}>Sign up</button>
+                </div>}
         </div>}
     </div>
 }
@@ -37,12 +38,13 @@ function SignUp(props) {
     console.log(error);
 
     return <div>{!loading && <div>
-        <label htmlFor="email">Email:</label>
-        <input type="text" id="email" name="email" onInput={e => setEmail(e.target.value)}/><br/><br/>
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" onInput={e => setPassword(e.target.value)}/><br/><br/>
+        <h1>Sign up</h1>
+        <label htmlFor="email" className="miscText">Email:</label>
+        <input type="text" id="email" name="email" onInput={e => setEmail(e.target.value)}/>
+        <label htmlFor="password" className="miscText">Password:</label>
+        <input type="password" id="password" name="password" onInput={e => setPassword(e.target.value)}/>
         <button onClick={() => createUserWithEmailAndPassword(email, password)}>Sign Up</button>
-        {error && <div className="error">{error.message}</div>}
+        {error && <div className="error miscText">{error.message}</div>}
     </div>
     }
     </div>
@@ -55,16 +57,16 @@ function SignIn(props) {
     const [password, setPassword] = useState(null);
     console.log(error);
 
-
     return <div>
-        <label htmlFor="signInEmail">Email:</label>
-        <input type="text" id="signInEmail" name="email" onInput={e => setEmail(e.target.value)}/><br/><br/>
-        <label htmlFor="signInPassword">Password:</label>
+        <h1>Sign in</h1>
+        <label htmlFor="signInEmail" className="miscText">Email:</label>
+        <input type="text" id="signInEmail" name="email" onInput={e => setEmail(e.target.value)}/>
+        <label htmlFor="signInPassword" className="miscText">Password:</label>
         <input type="password" id="signInPassword" name="password"
-               onInput={e => setPassword(e.target.value)}/><br/><br/>
-        <button onClick={() => signInWithEmailAndPassword(email, password)}>Sign In</button>
-        <button onClick={() => props.auth.signInWithPopup(googleProvider)}>Sign in With Google</button>
-        {!loading && error && <div className="error">{error.message}</div>}
+               onInput={e => setPassword(e.target.value)}/>
+        <button onClick={() => signInWithEmailAndPassword(email, password)}>Sign in</button>
+        <button onClick={() => props.auth.signInWithPopup(googleProvider)}>Sign in with Google</button>
+        {!loading && error && <div className="error miscText">{error.message}</div>}
     </div>
 }
 
@@ -74,6 +76,13 @@ export function SignedInApp(props) {
     const [sortValue, setSortValue] = useState("title");
     const [currentList, setCurrentList] = useState(null);
     const [currentPage, setCurrentPage] = useState("checklist");
+    const [verifyingEmail, setVerifyingEmail] = useState(false);
+
+    function verifyEmail() {
+        console.log("trying verifying email");
+        props.user.sendEmailVerification();
+        setVerifyingEmail(true);
+    }
 
     function changeCurrentPage(newPage) {
         setCurrentPage(newPage);
@@ -84,8 +93,8 @@ export function SignedInApp(props) {
     }
 
     return (
-        <div className="App">
-            <h1>
+        <div>
+            {/*<h1>*/}
                 <ListSelector currentList={currentList} changeCurrentList={changeCurrentList}
                               collection={props.collection} changeCurrentPage={changeCurrentPage}
                               currentPage={currentPage} user={props.user}
@@ -102,7 +111,7 @@ export function SignedInApp(props) {
                         </select></div>
                 </div>
                 }
-            </h1>
+            {/*</h1>*/}
 
             {currentList !== null &&
             <div>
@@ -113,6 +122,12 @@ export function SignedInApp(props) {
                            currentPage={currentPage}
                 />
 
+            </div>}
+            <div className="miscText">Signed in as {props.user.email}.</div>
+            <button onClick={() => props.auth.signOut()}>Sign Out</button>
+            {currentList === null && currentPage === "checklist" && props.user && !props.user.emailVerified && <div>
+                <button onClick={verifyEmail}>Validate Email</button>
+                {verifyingEmail && "Check your inbox for an email requesting validation."}
             </div>}
         </div>
     );

@@ -3,7 +3,7 @@ import {useCollection} from "react-firebase-hooks/firestore";
 import {ConfirmDeletePage} from "./ConfirmDeletePage";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {AddNewListPage} from "./AddNewListPage";
-import {SettingsPage, ShareListPage} from "./SettingsPage";
+import {SettingsPage} from "./SettingsPage";
 import {ConfirmLeaveListPage} from "./ConfirmLeaveListPage";
 
 export function ListSelector(props) {
@@ -15,7 +15,7 @@ export function ListSelector(props) {
         listsOwned = listOwnedValues.docs.map(doc =>
             doc.data());
     }
-    if (listSharedValues !== undefined) {
+    if (listSharedValues !== undefined && props.user.emailVerified) {
         listsShared = listSharedValues.docs.map(doc =>
             doc.data());
     }
@@ -69,8 +69,8 @@ export function ListSelector(props) {
         <div>
             {!loadingShared && !loadingOwned && props.currentPage !== "newList" && props.currentList !== null &&
             <>
-                {getListField("title")}
-                {listsShared.filter(item => item.id == props.currentList).length > 0 && " (shared)"}
+                <h1>{getListField("title")}
+                {listsShared.filter(item => item.id === props.currentList).length > 0 && " (shared)"}</h1>
             </>}
             {props.currentPage === "checklist" && <div id="sort-by">Select a list:
                 <select name="listSelector" aria-label="dropdown to select list" id="listSelectorDropdown"
@@ -81,10 +81,10 @@ export function ListSelector(props) {
                     {listsShared.map(item => <option value={item.id}
                                                     selected={item.id === props.currentList}>{item.title + " (shared)"}</option>)}
                 </select>
-                <button id="addButton" aria-label="Add new list" onClick={() => props.changeCurrentPage("newList")}>
+                {props.currentList !== null && <span>
+                    <button id="addButton" aria-label="Add new list" onClick={() => props.changeCurrentPage("newList")}>
                     +
                 </button>
-                {props.currentList !== null && <>
                 {getListField("owner") === props.user.uid && <button id="settingsButton" value="View and Change List Settings" aria-label="View and Change List Settings"
                         onClick={() => props.changeCurrentPage("settings")}>
                     <i className="fa fa-cog" aria-hidden="true"/>
@@ -93,7 +93,8 @@ export function ListSelector(props) {
                     onClick={() => props.changeCurrentPage("leaveList")}>
                     <i className="fa fa-trash" aria-hidden="true"/>
                 </button>}
-                </>
+                </span>
+
                 }
             </div>}
             {props.currentPage === "deleteList" &&
