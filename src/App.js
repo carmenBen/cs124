@@ -19,6 +19,7 @@ function App(props) {
         {loading && <h1>Loading now</h1>}
         {user && <div>
             <SignedInApp initialData={props.initialData} collection={props.collection} auth={props.auth} user={user}/>
+            Signed in as {user.email} <br/>
             <button onClick={() => props.auth.signOut()}>Sign Out</button>
         </div>}
         {user && !user.emailVerified && <button onClick={verifyEmail}>Validate Email</button>}

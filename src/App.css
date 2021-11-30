@@ -169,7 +169,7 @@ select {
   font-size: medium;
 }
 
-#addButton, #deleteButton {
+#addButton, #deleteButton, #settingsButton {
   height: 25px;
   width: 25px;
   margin-left: 5px;
