@@ -12,6 +12,16 @@ We decided on creating separate pages for adding items, modifying items, and the
 ## Deleting a list
 ![](deleteList.png)
 
+## Design decisions for sharing lists
+In the process of adding functionality to allow users to share lists we had to make several decisions on what rules this would follow. 
+We decided that if user A shares a list with user B, user B should not be able to share that list with user C. We felt this had better privacy for users and allowed the initial user more control over their list.
+We decided if user A shares a list with user B, user B should not be allowed to delete that list because they are not the owner. We felt only the original list creator should be allowed to delete a list. In order to address any issues arising from this, we decided to allow user B(and other users who have lists shared with them) to "leave" a list, meaning they can stop having the list shared with them, but the list will still exist for the owner and other users the list is shared with.
+We decided that if user A shares a list with user B, user B would not need to accept that sharing. Instead, the shared list just show up for user B. As mentioned above we handled any issues with this by allowing user B to leave a list.
+We chose to make shared lists be distinguishable in the UI from unshared lists. For the owner of a document, they can view who they have shared lists with in their settings page(and also remove sharing with users as well). For users a document has been shared with, the list title is displayed as a heading and in the dropdown list selector as "List title (shared)".
+Finally, we decided if user A shares a list with user B, user B should not see that list if they don't have an authenticated email address. This is to protect security in case a user is using someone elses email and has not verified it.
+
+We chose to create a settings page for lists owned by the user. This page allows users to delete their list, share their list, and remove sharing for specific users. 
+
 # Alternative designs
 ## Initial ideas
 Initially, we wanted to do only two separate pages, one to modify items and another to add items and hold the whole to do list. We ended up deciding to do a separate page for adding items, as you will see later, to keep our to do list page as simple and readable for the user as possible.
@@ -38,6 +48,8 @@ We asked three separate users to click through our webpages and talk through the
 We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We found that they occasionally clicked add and modify tasks without meaning to, so we added in the option to cancel these operations. We also found that they preferred a dropdown for selecting what to sort by, as well as priority, since it gave them their options clearly and quickly. We found that they didn't want to sort in a descending order and much preferred to sort ascending, so we decided to keep ascending as their only option to simplify the app.
 
 We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We found that they didn't want to scroll in landscape view so we implemented responsive design. We also found that they found it intuitive to have the delete list and add list buttons right next to the list dropdown as icons rather than spelled out.
+
+We asked three separate users to click through our webpages and talk through their thinking as they were doing so out loud. We found that they did not like editing the shared with users being on a separate page to the page to share a list with a new user so we decided to combine these into 1 page. We also found that in the new settings page they preferred having the delete list button be spelled out rather than an icon. Users also wanted to be able to see which account they were signed into so we added text to tell them.
 
 # Final design
 ## In an empty list, create an item named "Buy new John Grisham book"
@@ -71,12 +83,16 @@ When creating our React app we faced issues updating our states because we didn'
 
 In lab 4, we really struggled with restructuring the Firebase data to accommodate for the multiple lists. We also had a hard time with some of the styling for responsive design.
 
+In lab 5, we had difficulty handling the Firebase security rules and updating these rules to allow list sharing. We frequently found that we had insufficient permissions. We also struggled with how to intitially retrieve the data from the firebase and view both the lists a user owned and the lists that were shared with that user.
+
 # What we're proud of
 We are really proud of our table format because we believe separating our complete and incomplete tasks made our design a lot more usable. We also think our color choices really emphasize our design and add to the aesthetics of our page which also adds to the perception of usability.
 
 Finally, we are very proud of the way we chose to have a separate page and UI for adding new tasks and editing tasks. We believe that keeping this separate made our design clearer and simpler, and furthermore having the new task and edit task page be very similar also allows users to understand these pages easily.
 
 In lab 4, we're proud of the multiple list functionality, since this took a while to implement. We're also proud of the responsive design components and how we've grown in our ability to use CSS to produce something that's quite pretty.
+
+In lab 5, we were very proud of how we were able to edit the firebase security rules as this was something that had previously confused us in in-class assignments. We also were very proud of our new "settings" page and how it seemed to combine a lot of functionality.
 
 # Accessibility Videos
 https://drive.google.com/file/d/1VpTwc0aN9i3gXtVlyVz_iAGYEdjZnNnb/view?usp=sharing
