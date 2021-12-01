@@ -121,9 +121,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.npm start" />
-      <item itemvalue="npm.install gh-pages" />
       <item itemvalue="npm.deploy" />
+      <item itemvalue="npm.install gh-pages" />
+      <item itemvalue="npm.npm start" />
     </list>
     <recent_temporary>
       <list>
