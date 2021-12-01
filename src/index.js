@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
 import {InMemoryApp} from "./InMemoryApp";
 import firebase from "firebase/compat";
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+// import { Social } fro /m './components/Social'
 
 const initialData = []
 
@@ -20,14 +22,27 @@ const db = firebase.firestore();
 const collectionName = "carmenBen-hmc-tasks";
 const collection = db.collection(collectionName);
 
-ReactDOM.render(
-  <React.StrictMode>
-      <InMemoryApp initialData={initialData} collection={collection}/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+let startApp = () => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <InMemoryApp initialData={initialData} collection={collection}>
+                {/*<Social>*/}
+                {/*</Social>*/}
+            </InMemoryApp>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
+if(!window.cordova) {
+    startApp()
+} else {
+    document.addEventListener('deviceready', startApp, false)
+}
+
 reportWebVitals();
+
