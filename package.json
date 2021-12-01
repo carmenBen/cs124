@@ -2,7 +2,7 @@
   "name": "cs124",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://carmenBen.github.io/cs124",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp -r build/* ./cordova/www",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "install gh-pages": "npm install gh-pages --save-dev",
