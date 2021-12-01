@@ -5,7 +5,7 @@ We decided on creating separate pages for adding items, modifying items, and the
 ## Modifying items
 ![](task4_1.png)
 ## Original list
-![](homepage.png)
+![](task1.png)
 ![](otherList.png)
 ## Adding a new list
 ![](addList.png)
