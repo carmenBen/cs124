@@ -8,21 +8,24 @@ import firebase from "firebase/compat";
 const initialData = []
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCd9qqxvMpEKpBzwfWcc2tlRFa6ICaLH_s",
-    authDomain: "hmc-cs124-fa21-labs.firebaseapp.com",
-    projectId: "hmc-cs124-fa21-labs",
-    storageBucket: "hmc-cs124-fa21-labs.appspot.com",
-    messagingSenderId: "949410042946",
-    appId: "1:949410042946:web:0113b139a7e3cd1cc709db"
+    apiKey: "AIzaSyDPKaTLMKCRxvZrUC0Mr-zhmIvgib-wo2w",
+    authDomain: "cs124lab-86e6f.firebaseapp.com",
+    projectId: "cs124lab-86e6f",
+    storageBucket: "cs124lab-86e6f.appspot.com",
+    messagingSenderId: "624846876574",
+    appId: "1:624846876574:web:d46076bc03bef3f06ff08f",
+    measurementId: "G-DNNRR8Y9S2"
 };
+
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-const collectionName = "carmenBen-hmc-tasks";
+const collectionName = "List-AuthenticationRequired";
 const collection = db.collection(collectionName);
+const auth = firebase.auth();
 
 ReactDOM.render(
   <React.StrictMode>
-      <InMemoryApp initialData={initialData} collection={collection}/>
+      <InMemoryApp initialData={initialData} collection={collection} auth={auth}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

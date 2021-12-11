@@ -15,7 +15,7 @@ export function ModifyTaskPage(props) {
 
     return (
         <div>
-            <label id="modifyTask" htmlFor="changeTask">Modify Task:</label>
+            <div className="miscTextLarger">Modify Task:</div>
             <input type="text" id="changeTask" name="changeTask" defaultValue={props.taskName} onChange={(e) => setTitle(e.target.value)}/>
             <select name="priority" id="priority-dropdown" aria-label="dropdown to select priority" onChange={(e) => setPriority(e.target.value)}>
                 <option value="1">High</option>

@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth.uid != null && request.auth.uid != null;
+    }
+
+    function isDocOwner() {
+      return request.auth.uid == resource.data.owner;
+    }
+
+    function updatedDocHasCorrectOwner() {
+      return request.auth.uid == request.resource.data.owner;
+    }
+
+    function updatedDocHasSameOwner() {
+      return resource.data.owner == request.resource.data.owner;
+    }
+
+    function updatedDocHasSameSharing() {
+      return resource.data.sharing == request.resource.data.sharing;
+    }
+
+    function isSharedWithMe() {
+      return request.auth.token.email in resource.data.sharing;
+    }
+
+    match /List-AuthenticationRequired/{list} {
+      allow read: if signedIn() && (isDocOwner() || isSharedWithMe());
+      allow create: if signedIn() && updatedDocHasCorrectOwner();
+      allow update: if signedIn() && (isDocOwner() || isSharedWithMe());
+      allow delete: if signedIn() && isDocOwner();
+
+      match /tasks/{task} {
+        allow read, create, update, delete: if signedIn() &&
+        (get(/databases/$(database)/documents/List-AuthenticationRequired/$(list)).data.owner == request.auth.uid ||
+        request.auth.token.email in get(/databases/$(database)/documents/List-AuthenticationRequired/$(list)).data.sharing);
+      }
+    }
+
+  }
+}
+
+

@@ -115,6 +115,9 @@ export function Checklist(props) {
                     <AddTaskPage addNewDataPoint={addNewItem} cancel={() => props.changeCurrentPage("checklist")}/>
                 }
             </div>
+            <div>
+
+            </div>
         </div>
     )
 
