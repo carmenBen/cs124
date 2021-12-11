@@ -81,10 +81,10 @@ export function ListSelector(props) {
                     {listsShared.map(item => <option value={item.id}
                                                     selected={item.id === props.currentList}>{item.title + " (shared)"}</option>)}
                 </select>
-                {props.currentList !== null && <span>
-                    <button id="addButton" aria-label="Add new list" onClick={() => props.changeCurrentPage("newList")}>
+                <button id="addButton" aria-label="Add new list" onClick={() => props.changeCurrentPage("newList")}>
                     +
                 </button>
+                {props.currentList !== null && <span>
                 {getListField("owner") === props.user.uid && <button id="settingsButton" value="View and Change List Settings" aria-label="View and Change List Settings"
                         onClick={() => props.changeCurrentPage("settings")}>
                     <i className="fa fa-cog" aria-hidden="true"/>
